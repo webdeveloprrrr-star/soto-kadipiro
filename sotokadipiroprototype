@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soto Kadipiro - Legenda Kuliner Yogyakarta Sejak 1921</title>
+  <style>
+    /* Skema Warna Khas Plang Vintage Soto Kadipiro */
+    :root {
+      --bg-cream: #FBF8F1;        /* Krem latar bersih */
+      --text-main: #2C221E;       /* Cokelat tua kayu */
+      --teal-kadipiro: #1B5E63;   /* Biru hijau teal cat list papan nama */
+      --yellow-mustard: #E5A000;  /* Kuning emas tulisan papan nama */
+      --red-terracotta: #8C2D19;  /* Merah bata aksen */
+      --card-bg: #FFFFFF;
+      --border-color: #E2D9C8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Header & Navbar Minimalis */
+    header {
+      background-color: var(--teal-kadipiro);
+      color: #FFF;
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      border-bottom: 5px solid var(--yellow-mustard);
+    }
+
+    .brand-title {
+      font-family: 'Georgia', serif;
+      font-size: 2.5rem;
+      color: var(--yellow-mustard);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.95rem;
+      color: #E0F2F1;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: 'Georgia', serif;
+      font-size: 1.6rem;
+      color: var(--red-terracotta);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Hero Banner Utama */
+    .hero-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      color: #FFF;
+      padding: 1.5rem 1.2rem 1rem;
+    }
+
+    .hero-info h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.2rem;
+      color: var(--yellow-mustard);
+    }
+
+    .hero-info p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* Blok Cerita / Sejarah */
+    .story-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--teal-kadipiro);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .story-card p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-highlight {
+      font-style: italic;
+      color: var(--red-terracotta);
+      font-weight: 500;
+    }
+
+    /* Keunikan Dalam Card Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .feature-body {
+      padding: 1rem;
+    }
+
+    .feature-body h3 {
+      font-size: 1.05rem;
+      color: var(--teal-kadipiro);
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-body p {
+      font-size: 0.88rem;
+      color: #555;
+    }
+
+    /* Review Google Maps */
+    .gmaps-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .reviewer-profile {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--teal-kadipiro);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .reviewer-meta .name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .reviewer-meta .status {
+      font-size: 0.75rem;
+      color: #777;
+    }
+
+    .stars {
+      color: #FFB800;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .review-text {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    /* Peta Google Maps */
+    .map-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Action Box & Tombol Pesan Online */
+    .cta-container {
+      background: #F0E8D8;
+      border: 1px solid var(--border-color);
+      padding: 1.8rem 1.2rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .cta-container h3 {
+      color: var(--teal-kadipiro);
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta-container p {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #FFF;
+      transition: transform 0.1s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-gojek { background-color: #00880C; }
+    .btn-wa { background-color: #128C7E; }
+    .btn-maps { background-color: #1A73E8; }
+
+    footer {
+      text-align: center;
+      padding: 1.8rem;
+      background: var(--text-main);
+      color: #C0B2A3;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">SOTO KADIPIRO</div>
+    <div class="brand-subtitle">WARISAN KULINER YOGYAKARTA SEJAK 1921</div>
+  </header>
+
+  <div class="container">
+
+    <!-- Gambar Suasana Depan Warung -->
+    <div class="hero-card">
+      <img src="https://awsimages.detik.net.id/community/media/visual/2023/11/03/warung-soto-kadipiro-di-jalan-wates-bantul-3_169.jpeg?w=650&q=90" alt="Bangunan Asli Warung Soto Kadipiro">
+      <div class="hero-info">
+        <h2>Warung Soto Kadipiro (Pusat)</h2>
+        <p>Jl. Wates No. 33, Kadipiro, Ngestiharjo, Bantul (Sisi Utara Jalan)</p>
+      </div>
+    </div>
+
+    <!-- Bagian Cerita & Sejarah Warung -->
+    <section>
+      <h2 class="section-title">Sejarah & Warisan</h2>
+      <div class="story-card">
+        <p>
+          Rintisan Soto Kadipiro berawal dari usaha pikulan keliling oleh <span class="story-highlight">Tahak (Mbah Hadiwinoto)</span> pada tahun 1921. Setelah bertahun-tahun berkeliling wilayah Yogyakarta, usaha ini akhirnya menetap di Jalan Wates No. 33 pada tahun 1928 dan berkembang menjadi warung soto legendaris hingga saat ini.
+        </p>
+        <p>
+          Dikelola secara turun-temurun oleh generasi keluarga, Warung Soto Kadipiro di utara jalan tetap mempertahankan arsitektur kayu tradisional serta resep racikan awal tanpa menggunakan bahan penyedap buatan secara berlebihan.
+        </p>
+      </div>
+    </section>
+
+    <!-- Keunikan Otentik -->
+    <section>
+      <h2 class="section-title">Keunikan Cita Rasa</h2>
+      <div class="feature-grid">
+
+        <div class="feature-card">
+          <img src="https://tripjogja.co.id/wp-content/uploads/2019/06/20190615_091447_HDR.jpg" alt="Mangkuk Soto Ayam Kadipiro">
+          <div class="feature-body">
+            <h3>Kuah Bening Kuali Tanah</h3>
+            <p>Kaldu bening gurih berbumbu kemiri dan kunir asli, dimasak kuali tanah liat dengan kayu bakar tradisional.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <img src="https://awsimages.detik.net.id/community/media/visual/2023/11/03/warung-soto-kadipiro-di-jalan-wates-bantul-3_169.jpeg?w=650&q=90" alt="Lauk Pendamping">
+          <div class="feature-body">
+            <h3>Pendamping & Sarsaparilla</h3>
+            <p>Sate telur puyuh, perkedel kentang, tempe bacem, serta sajian minuman klasik Limun Sarsaparilla.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Ulasan Asli Google Maps -->
+    <section>
+      <h2 class="section-title">Ulasan Pengunjung Google Maps</h2>
+      
+      <div class="gmaps-card">
+        <div class="reviewer-profile">
+          <div class="avatar">A</div>
+          <div class="reviewer-meta">
+            <div class="name">Andi Prasetyo</div>
+            <div class="status">Local Guide • Google Maps</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">
+          "Soto legendaris yang rasanya tidak pernah berubah. Kuahnya segar, bening, dan gurih alami kaldu ayam kampung. Suasananya klasik, sangat memuaskan dimakan bareng perkedel dan sate puyuh."
+        </p>
+      </div>
+
+      <div class="gmaps-card">
+        <div class="reviewer-profile">
+          <div class="avatar">S</div>
+          <div class="reviewer-meta">
+            <div class="name">Siti Rahmawati</div>
+            <div class="status">Pengunjung Terverifikasi</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Cita rasa tradisional yang sesungguhnya. Tempatnya bersih, sederhana, dan pelayanannya cepat walau sedang ramai jam makan siang."</p>
+      </div>
+    </section>
+
+    <!-- Peta Lokasi Google Maps Real -->
+    <section>
+      <h2 class="section-title">Lokasi Warung</h2>
+      <div class="map-box">
+        <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.883907869389!2d110.3421379!3d-7.8021151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57f6E6590965%3A0x85fef47ee7ce1323!2sWARUNG%20SOTO%20KADIPIRO!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+        <a href="https://maps.app.goo.gl/9P8L3X8p4N7P3fT3A" target="_blank" class="btn btn-maps">📍 Petunjuk Arah Google Maps</a>
+      </div>
+    </section>
+
+    <!-- Akses Pesan Antar / Walk-in -->
+    <section>
+      <div class="cta-container">
+        <h3>Pesan Antar & Kontak</h3>
+        <p>Warung melayani makan di tempat sistem <strong>langsung datang (walk-in)</strong> tanpa reservasi meja. Jam operasional: 08.00–14.30 WIB.</p>
+
+        <div class="btn-group">
+          <a href="https://gofood.link" target="_blank" class="btn btn-gojek">PESAN VIA GOFOOD</a>
+          <a href="https://wa.me/6281328785271?text=Halo%20Soto%20Kadipiro,%20saya%20mau%20tanya%20menu%20pesanan" target="_blank" class="btn btn-wa">WHATSAPP KAMI</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>WARUNG SOTO KADIPIRO (PUSAT)</p>
+    <p style="margin-top:0.3rem;">Jl. Wates No.33, Ngestiharjo, Kec. Kasihan, Bantul, D.I. Yogyakarta</p>
+  </footer>
+
+</body>
+</html>
